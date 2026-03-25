@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>360 Image VR</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- A-Frame -->
+  <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
+
+  <style>
+    body { margin: 0; overflow: hidden; }
+  </style>
+</head>
+
+<body>
+
+<a-scene>
+
+  <!-- Assets -->
+  <a-assets>
+    <!-- <img id="img3601" src="./media/Pics/pic2.jpg"> -->
+    <!-- <img id="img3602" src="./media/Pics/pic1.jpg"> -->
+    <img id="img3603" src="./media/Pics/pic3.jpg">
+    <img id="img3604" src="./media/Pics/pic4.jpg">
+    <img id="img3605" src="./media/Pics/pic5.jpg">
+    <!-- <img id="img3606" src="./media/Pics/20260324_103004.jpg"> -->
+    <!-- <img id="img3607" src="./media/Pics/20260324_103041.jpg"> -->
+    <!-- <img id="img3608" src="./media/Pics/PXL_20260324_142722069.PHOTOSPHERE.jpg"> -->
+    <img id="img3609" src="./media/Pics/PXL_20260324_142904654.PHOTOSPHERE.jpg">
+    <img id="img36010" src="./media/Pics/PXL_20260324_143243969.PHOTOSPHERE.jpg">
+    <img id="img36011" src="./media/Pics/PXL_20260324_144338361.PHOTOSPHERE.jpg">
+  </a-assets>
+
+  <!-- 360 Image Sphere -->
+  <!-- <a-sky 
+    src="#img3601"
+    position="0 0 0"
+    rotation="0 180 0">
+  </a-sky> -->
+
+  <!-- <a-sky
+    src="#img3602"
+    position="1500 0 0"
+    rotation="0 180 0"
+  ></a-sky> -->
+
+  <a-sky
+    src="#img3603"
+    position="1500 0 0"
+    rotation="0 180 0"
+  ></a-sky>
+
+  <a-sky
+    src="#img3604"
+    position="0 0 0"
+    rotation="0 180 0"
+  ></a-sky>
+
+  <a-sky
+    src="#img3605"
+    position="3000 0 0"
+    rotation="0 180 0"
+  ></a-sky>
+
+
+  <!-- <a-sky
+    src="#img3606"
+    position="-1500 0 0"
+    rotation="0 180 0"
+  ></a-sky> -->
+
+  <!-- <a-sky
+    src="#img3607"
+    position="-3000 0 0"
+    rotation="0 180 0"
+  ></a-sky> -->
+
+  <!-- <a-sky
+    src="#img3608"
+    position="-4500 0 0"
+    rotation="0 180 0"
+  ></a-sky> -->
+
+  <a-sky
+    src="#img3609"
+    position="-1500 0 0"
+    rotation="0 180 0"
+  ></a-sky>
+
+  <a-sky
+    src="#img36010"
+    position="-3000 0 0"
+    rotation="0 180 0"
+  ></a-sky>
+
+
+  <a-sky
+    src="#img36011"
+    position="4500 0 0"
+    rotation="0 180 0"
+  ></a-sky>
+
+  <!-- Camera (movement allowed) -->
+  <a-entity 
+  camera 
+  look-controls 
+  wasd-controls="acceleration: 7000" 
+  position="0 1.6 0">
+  <a-cursor></a-cursor>
+</a-entity>
+
+</a-scene>
+
+</body>
+</html>

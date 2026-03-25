@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>360 Video VR</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- A-Frame -->
+  <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
+
+  <style>
+    body { margin: 0; overflow: hidden; }
+
+    #playBtn {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      padding: 12px 20px;
+      font-size: 18px;
+      background: black;
+      color: white;
+      border: none;
+      cursor: pointer;
+      z-index: 10;
+    }
+  </style>
+</head>
+
+<body>
+
+<button id="playBtn">▶ Play Video</button>
+
+<a-scene>
+
+  <!-- Assets -->
+  <a-assets>
+    <video 
+      id="vid"
+      src="./media/vid5.mp4"
+      preload="auto"
+      loop
+      muted
+      playsinline
+      webkit-playsinline
+      crossorigin="anonymous">
+    </video>
+  </a-assets>
+
+  <!-- 360 Video Sphere -->
+  <a-videosphere 
+    id="sphere"
+    src="#vid"
+    rotation="0 180 0"
+    scale="-1 1 1">
+  </a-videosphere>
+
+  <!-- Slight inner sphere to hide seam -->
+  <a-videosphere 
+    src="#vid"
+    rotation="0 180.5 0"
+    scale="-1.01 1.01 1.01"
+    material="opacity: 0.15">
+  </a-videosphere>
+
+  <!-- Camera (movement allowed) -->
+  <a-entity camera look-controls wasd-controls position="0 1.6 0">
+    <a-cursor></a-cursor>
+  </a-entity>
+
+  <!-- Fade overlay -->
+  <a-plane 
+    id="fade"
+    position="0 1.6 -1"
+    width="4"
+    height="3"
+    color="black">
+  </a-plane>
+
+</a-scene>
+
+<script>
+  const video = document.getElementById('vid');
+  const btn = document.getElementById('playBtn');
+  const fade = document.getElementById('fade');
+
+  btn.addEventListener('click', () => {
+
+    // Slight offset to avoid seam frame
+    video.currentTime = 0.05;
+
+    // Normal speed (don't use 0.1, it exaggerates seam)
+    video.playbackRate = 1;
+
+    video.play();
+
+    // Fade-in effect
+    let opacity = 1;
+    const interval = setInterval(() => {
+      opacity -= 0.05;
+      fade.setAttribute('material', 'opacity', opacity);
+
+      if (opacity <= 0) {
+        fade.parentNode.removeChild(fade);
+        clearInterval(interval);
+      }
+    }, 50);
+
+    btn.style.display = 'none';
+  });
+</script>
+
+</body>
+</html>

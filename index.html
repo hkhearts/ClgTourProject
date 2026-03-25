@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>360 Video VR</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- A-Frame Library -->
+  <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
+
+  <style>
+    body { margin: 0; overflow: hidden; }
+    #playBtn {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      padding: 12px 20px;
+      font-size: 18px;
+      background: black;
+      color: white;
+      border: none;
+      cursor: pointer;
+      z-index: 10;
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- Play button (important for mobile autoplay restrictions) -->
+<button id="playBtn">▶ Play Video</button>
+
+<a-scene>
+  
+  <!-- Assets -->
+  <a-assets>
+    <video 
+      id="vid"
+      src="./media/vid5.mp4"
+      preload="auto"
+      loop
+      crossorigin="anonymous"
+      playsinline
+      webkit-playsinline>
+    </video>
+  </a-assets>
+  <a-box position="0 0 0"></a-box>
+  
+
+  <!-- 360 Video Sphere -->
+  <a-videosphere src="#vid" rotation="0 -90 0"></a-videosphere>
+
+  <!-- Camera with controls -->
+  <a-entity camera look-controls wasd-controls></a-entity>
+
+</a-scene>
+
+<script>
+  const video = document.getElementById('vid');
+  const btn = document.getElementById('playBtn');
+
+  btn.addEventListener('click', () => {
+    video.play();
+    video.playbackRate = 0.1;
+    btn.style.display = 'none';
+  });
+</script>
+
+</body>
+</html>
